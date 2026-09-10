@@ -1,0 +1,42 @@
+Validation — 2026-09-10 (supersedes 2026-09-09)
+
+FONTS AS SHIPPED
+  serif.woff2   Mist Serif   Noto Serif SC, Light wght=300, subset
+                190 cmap characters / 191 glyphs / woff2 / 24,288 bytes
+                SHA256 297de509c63f1a80fd691d2d6dd334d2c51170341a5eef4aa5c7c705b7d768fe
+  script.woff2  Mist Script  Pinyon Script Regular, subset
+                75 cmap characters / 76 glyphs / woff2 / 19,576 bytes
+                SHA256 e4a61baf7e7a2fa9cdf2921fd16323b082f06c512a1d82273ed8fb3288860560
+  MistSplash/ total 162,661 bytes (159 KB) across 11 files.
+
+PASS  Glyph coverage. The template needs 129 distinct characters (quotes.js plus the
+      two fixed lines in index.html); serif.woff2 carries 128 of them. The one absent
+      codepoint is U+0020 SPACE, which falls through to the generic serif fallback;
+      measured advance is identical (3.497px at 11px) so wrapping and layout are
+      unaffected. The 4 characters of the 'Mist' wordmark are all present in
+      script.woff2.
+PASS  Local HTML asset references resolve. No package.json, lockfile, Podfile,
+      Package.swift or node_modules anywhere in the tree.
+PASS  No external network references in HTML, CSS or JS. The only imports in
+      SplashView.swift are SwiftUI and WebKit (Apple system frameworks).
+PASS  JavaScript syntax checks (node --check) on all four scripts.
+PASS  Simulated iOS navigator.standalone=true / media=false => 874px.
+PASS  Ordinary browser untouched; standalone landscape and full-height cases.
+
+PASS  Browser run (new this round). Chromium headless, served over http://127.0.0.1.
+      Page reached opacity 1, fonts 'Mist Serif' and 'Mist Script' both reported
+      status=loaded, 800+ animation frames with no startError / frameError, and a
+      synthetic 25-step pointer drag cleared 5,782 mask pixels with the quote text
+      revealed along the path. Renderer resolved to the 2D canvas fallback because the
+      headless environment exposes no GPU.
+PASS  Quote-count robustness (new this round). A nine-entry quotes.js renders nine
+      layout blocks and animates normally. The 2026-09-09 code raised
+      "Cannot read properties of undefined (reading 'w')" on the eighth entry and
+      never drew a frame.
+
+NOT RUN
+  WebGL render path. No GPU in this environment; only the canvas fallback executed.
+  The two paths composite colour differently, so the WebGL look is still unverified.
+  iPhone physical-device validation.
+  Swift compilation. No Xcode or Swift toolchain on this machine.
+  Android.

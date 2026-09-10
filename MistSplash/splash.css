@@ -1,0 +1,27 @@
+@font-face{font-family:'Mist Serif';font-style:normal;font-weight:300;src:url('serif.woff2') format('woff2');font-display:block}
+@font-face{font-family:'Mist Script';font-style:normal;font-weight:400;src:url('script.woff2') format('woff2');font-display:block}
+:root{--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent;-webkit-text-size-adjust:100%;overscroll-behavior:none}
+
+body{background:#719AE0}
+
+
+
+html.alw-standalone, html.alw-standalone body{height:var(--alw-vh, 100vh)}
+
+
+
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+
+#mist-living-water{width:100%;height:100%;overflow:hidden;opacity:0;transition:opacity .45s ease}
+#mist-living-water .alw-screen{position:relative;width:100%;height:100%;overflow:hidden;background:transparent;isolation:isolate}
+#mist-living-water .alw-photo,#mist-living-water .alw-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block}
+#mist-living-water .alw-canvas{touch-action:none;cursor:crosshair;z-index:1}
+#mist-living-water .alw-intro{position:absolute;left:max(8.2%,calc(var(--safe-left) + 20px));top:calc(var(--safe-top) + 28px);color:#fff;z-index:3;pointer-events:none;text-shadow:0 1px 7px #255b89}
+#mist-living-water .alw-en{font:300 10px/1.8 'Mist Serif',serif;letter-spacing:2.1px}
+#mist-living-water .alw-cn{margin-top:9px;font:300 11px/1.8 'Mist Serif',serif;letter-spacing:.7px}
+
+#mist-living-water .alw-enter{position:absolute;right:max(6.5%,var(--safe-right));bottom:max(20px,calc(var(--safe-bottom) + 12px));min-width:62px;min-height:48px;padding:4px 8px;border:0;background:transparent;color:#fff;font:300 10px/1.8 'Mist Serif',serif;letter-spacing:2.1px;text-shadow:0 1px 9px #376496;cursor:pointer;z-index:4;-webkit-tap-highlight-color:transparent}
+#mist-living-water .alw-access{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.mist-demo-end{display:flex;flex-direction:column;align-items:center;justify-content:center;position:absolute;inset:0;color:white;font:300 20px serif}
+.mist-demo-end button{font:inherit;font-size:14px;color:white;background:rgba(30,60,110,.35);border:1px solid rgba(255,255,255,.5);border-radius:24px;padding:12px 24px;cursor:pointer}
